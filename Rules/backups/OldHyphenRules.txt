@@ -1269,7 +1269,7 @@ good-by	goodbye
 good-bye	goodbye
 good-hearted	goodhearted
 good-hope	good hope
-good-humor	good humour
+good-humor	good humor
 good-humored	good-humoured
 good-humour'd	good-humoured
 good-morrow	good morrow
@@ -1315,7 +1315,7 @@ great-grandfather	great grandfather
 great-grandmother	great grandmother
 great-grandson	great grandson
 great-prior	great prior
-greatbritain	great britain
+greatbritain	great-britain
 greatest-happiness	greatest happiness
 green-coloured	green coloured
 green-house	greenhouse
@@ -1594,11 +1594,11 @@ hove-to	hove to
 hue-and-cry	hue and cry
 huilli-che	huilliche
 human-kind	humankind
-humannature	human nature
+humannature	human-nature
 humble-bees	humble bees
 humbleservant	humble-servant
 humming-bird	hummingbird
-humming-birds	hummingbirds
+humming-birds	humming birds
 hundred-fold	hundredfold
 hundred-weight	hundredweight
 hunting-ground	hunting ground
@@ -1636,40 +1636,40 @@ ill-fed	ill fed
 ill-formed	ill formed
 ill-fortune	ill fortune
 ill-health	ill health
-ill-humor	ill humour
+ill-humor	ill-humour
 ill-informed	ill informed
 ill-judged	ill judged
 ill-looking	ill looking
 ill-luck	ill luck
 ill-managed	ill managed
-ill-natur'd	ill natured
+ill-natur'd	ill-natured
 ill-placed	ill placed
 ill-regulated	ill regulated
 ill-starred	ill starred
 ill-success	ill success
 ill-temper	ill temper
 ill-tempered	ill tempered
-ill-tim'd	ill timed
+ill-tim'd	ill-timed
 ill-treat	ill treat
 ill-treating	ill treating
 ill-understood	ill understood
-ill-used	ill-used
-illadapted	ill adapted
+ill-used	ill used
+illadapted	ill-adapted
 illbred	ill-bred
 illfated	ill-fated
 illfounded	ill-founded
 illgotten	ill-gotten
-illhumor	ill humour
-illhumour	ill humour
-illnatur'd	ill natured
-illnature	ill nature
-illnatured	ill natured
-illsuited	ill suited
-illtim'd	ill timed
-illtimed	ill timed
+illhumor	ill-humour
+illhumour	ill-humour
+illnatur'd	ill-natured
+illnature	ill-nature
+illnatured	ill-natured
+illsuited	ill-suited
+illtim'd	ill-timed
+illtimed	ill-timed
 illtreated	ill-treated
-illtreatment	ill treatment
-illusage	ill usage
+illtreatment	ill-treatment
+illusage	ill-usage
 illwill	ill-will
 im-the	im the
 image-worship	image worship
@@ -1955,7 +1955,7 @@ malt-tax	malt tax
 maltebrun	malte-brun
 man-at-arms	man at arms
 man-servant	manservant
-manderinchief	commander-in-chief
+manderinchief	mander-in-chief
 manofwar	man-of-war
 manor-house	manor house
 mansionhouse	mansion-house
@@ -2213,7 +2213,7 @@ non-residence	nonresidence
 non-resident	nonresident
 non-resistance	nonresistance
 nonintercourse	non-intercourse
-nonresidents	nonresidents
+nonresidents	non-residents
 noon-day	noonday
 noon-tide	noontide
 nor-general	nor general
@@ -3478,7 +3478,7 @@ unhop'd-for	unhoped-for
 unhop'dfor	unhoped-for
 unhopedfor	unhoped-for
 unionjack	union-jack
-unitedstates	united states
+unitedstates	united-states
 unlook'd-for	unlooked-for
 unlook'dfor	unlooked-for
 unlookedfor	unlooked-for
@@ -3695,7 +3695,6 @@ wellbeing	well-being
 wellbred	well-bred
 wellknown	well-known
 wellmeaning	well-meaning
-welltodo	well-to-do
 west-country	west country
 west-end	west end
 west-front	west front

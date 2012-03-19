@@ -11,7 +11,9 @@ RulePath = "/Users/tunderwood/Tokenize/Rules/"
 
 OutputPath = "/Users/tunderwood/Tokenize/Output/"
 
-MetaPath = "/Users/tunderwood/Tokenize/Metadata/"
+CollMetaPath = "/Users/tunderwood/Tokenize/CollectionMetadata/"
+
+LoadMetaPath = "/Users/tunderwood/Tokenize/LoadingMetadata/"
 
 print('Begin')
 
@@ -183,7 +185,7 @@ User = input('Collection type? (ecc/ncf/eaf/19b/ver) ')
 CollType = User
 
 if User == "ecc":
-    FileString = RulePath + "ECCOmeta.txt"
+    FileString = LoadMetaPath + "Metadata.txt"
     F = codecs.open(FileString, 'r', 'utf-8')
     FileLines = F.readlines()
     F.close()
@@ -201,7 +203,7 @@ if User == "ecc":
         Titles[File] = Title
         
 elif User == "19b":
-    FileString = RulePath + "Metadata.txt"
+    FileString = LoadMetaPath + "Metadata.txt"
     F = codecs.open(FileString, 'r', 'utf-8')
     FileLines = F.readlines()
     F.close()
@@ -222,7 +224,7 @@ elif User == "19b":
         Titles[File] = Title
 
 elif User == "ver":
-    FileString = RulePath + "VerseMetadata.txt"
+    FileString = LoadMetaPath + "Metadata.txt"
     F = codecs.open(FileString, 'r', 'utf-8')
     FileLines = F.readlines()
     F.close()
@@ -256,7 +258,7 @@ for FileName, Title in Titles.items():
 
 ## The following section limits the Lexicon to roughly the top 27,000 words.
 
-FileString = "/Users/tunderwood/Rules/Output/Included.txt"
+FileString = RulePath + "Included.txt"
 F = codecs.open(FileString, 'r', 'utf-8')
 FileLines = F.readlines()
 F.close()
@@ -271,9 +273,61 @@ for Line in FileLines:
     if Freq > 99:
         Common[Word] = Freq
 
+User = input('Use existing CollectionMetadata (e) or start from scratch (s) or use metadata in /Output (o)? ')
+
+if User == 'e':
+
+    print('Now copying existing metadata from Collection folder to Output folder.')
+
+    FileString = CollMetaPath + "DocMetadata.txt"
+    F = codecs.open(FileString, 'r', 'utf-8')
+    FileLines = F.readlines()
+    F.close()
+
+    FileString = OutputPath + "DocMetadata.txt"
+    F = codecs.open(FileString, 'w', 'utf-8')
+    for Line in FileLines:
+        F.write(Line)
+    F.close()
+
+    FileString = CollMetaPath + "SegmentMetadata.txt"
+    F = codecs.open(FileString, 'r', 'utf-8')
+    FileLines = F.readlines()
+    F.close()
+
+    FileString = OutputPath + "SegmentMetadata.txt"
+    F = codecs.open(FileString, 'w', 'utf-8')
+    for Line in FileLines:
+        F.write(Line)
+    F.close()
+
+    Line = FileLines[-1]
+    Line = Line.rstrip()
+    LineParts = Line.split(TabChar)
+    Segment = int(LineParts[0])
+
+    print('Last existing segment number is ', Segment)  
+    Segment = Segment + 1
+    print('Using ', Segment, 'as the next segment number.')
+
+elif User == 's':
+    
+    Segment = 1
+
+else:
+    FileString = OutputPath + "SegmentMetadata.txt"
+    F = codecs.open(FileString, 'r', 'utf-8')
+    FileLines = F.readlines()
+    F.close()
+
+    Line = FileLines[-1]
+    Line = Line.rstrip()
+    LineParts = Line.split(TabChar)
+    Segment = int(LineParts[0]) + 1
+    print('Using metadata in output folder, starting at seg ', Segment)
+    
+
 del FileLines
-   
-Segment = int(input('Starting segment number? '))
 
 Tenth = int(DocLen/10)
 Tenths = frozenset(range(Tenth, DocLen+Tenth, Tenth))
@@ -345,7 +399,7 @@ for FileName in DirList:
         LineCount += 1
 
         WordSet = set([x.lower() for x in WordList])
-        if len(WordSet.intersection(KeyTitleWords)) > 0 and LineCount > 30:
+        if len(WordSet.intersection(KeyTitleWords)) > 0 and LineCount > 30 and CollType != 'ecc':
             StrippedList = []
             for Word in WordList:
                 Candidate = strip_punctuation(Word.lower())
@@ -370,6 +424,7 @@ for FileName in DirList:
                 if Ratio > 0.7:                   
                     Match = False
                     LowerLine = SpaceChar.join(StrippedList)
+                    LowerLine = LowerLine.strip()
                     for RunningHead in HeadList:
                         EditDistance = difflib.SequenceMatcher(None, LowerLine, RunningHead).ratio()
                         if EditDistance > 0.75:
